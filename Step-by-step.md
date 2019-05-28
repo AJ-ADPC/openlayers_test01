@@ -1,4 +1,5 @@
 # 1. Installation
+Do this step on command prompt or terminal
 ```bash
   ## create a package.json file
   npm init
