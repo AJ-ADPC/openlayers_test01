@@ -46,11 +46,36 @@ Create index.html in the project folder and write these lines. (Type ! and Enter
 ```
 
 # 4. Create style.css
-Create index.html in the project folder and write
+Create style.css in the project folder and write
 ```css
   #map {
     width: 100%;
   }
+```
+
+# 5. Create app.js
+Create app.js in the project folder and write
+```javascript
+  console.log('Hello');
+```
+
+# 6. Add Bootstrap to index.html
+Bootstrap builds responsive web design, mobile-first projects.
+Go to https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp, scroll down to Bootstrap 4 CDN
+Then copy the MaxCDN code and paste it in the header section before any css style.
+```html
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+```
 
 # 3. add craete app.js
 ```javascript
