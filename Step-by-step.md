@@ -1,62 +1,62 @@
 # 0. Create project folder
 ```bash
-  mkdir webgis_test1
+mkdir webgis_test1
 ```
 
 # 1. Installation
 Do this step in command prompt or terminal
 ```bash
-  # create a package.json file
-  npm init
-  
-  # install Parcel, a web application bundler. This will also create node_modules folder with all necessary packages.
-  npm install --save-dev parcel-bundler
-  
-  # install OpenLayers (ol) inside node_modules folder
-  npm i --save ol
-  
-  # install jquery inside node_modules folder
-  npm i --save jquery
+# create a package.json file
+npm init
+
+# install Parcel, a web application bundler. This will also create node_modules folder with all necessary packages.
+npm install --save-dev parcel-bundler
+
+# install OpenLayers (ol) inside node_modules folder
+npm i --save ol
+
+# install jquery inside node_modules folder
+npm i --save jquery
 ```
 # 2. Configure package.json
 Creat command for parcel by adding last two lines below into package.json
 ```javascript
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html",
-    "build": "parcel build --public-url . index.html"
-  }
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "parcel index.html",
+  "build": "parcel build --public-url . index.html"
+}
 ```
 
 # 3. Create index.html
 Create index.html in the project folder and write these lines. (Type ! and Enter in VS Code)
 ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Document</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
 
-  </body>
-  </html>
+</body>
+</html>
 ```
 
 # 4. Create style.css
 Create style.css in the project folder and write
 ```css
-  #map {
-    width: 100%;
-  }
+#map {
+  width: 100%;
+}
 ```
 
 # 5. Create app.js
 Create app.js in the project folder and this line to call jquery
 ```javascript
-  window.$ = require('jquery');
+window.$ = require('jquery');
 ```
 
 # 6. Add Bootstrap
@@ -65,17 +65,17 @@ Bootstrap builds responsive web design, mobile-first projects.<br/>
 Go to https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp, scroll down to Bootstrap 4 CDN.<br/>
 Then copy the MaxCDN code and paste it in the header section before any css style.
 ```html
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-  <!-- Popper JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 ```
 
 # 7. Add navigation bar
@@ -118,22 +118,19 @@ Enter command below in terminal to get parcel to work. If it works, the webpage 
 # 9. Develop application
 Import ol to app.js
 ```javascript
-  // Import ol
-  import 'ol/ol.css';
-  import {
-      Map,
-      View
-  } from 'ol';
-  import TileLayer from 'ol/layer/Tile';
-  import OSM from 'ol/source/OSM';
+// Import ol
+import 'ol/ol.css';
+import {
+    Map,
+    View
+} from 'ol';
+import TileLayer from 'ol/layer/Tile';
+import OSM from 'ol/source/OSM';
 ```
 
 
-# 3. add craete app.js
-```javascript
-//   craete app.js
-window.$ = require('jquery');
 
+```
 import 'ol/ol.css';
 import {
   Map,
