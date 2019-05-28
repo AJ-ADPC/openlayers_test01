@@ -9,7 +9,7 @@ Do this step in command prompt or terminal
   # create a package.json file
   npm init
   
-  # install Parcel, a web application bundler
+  # install Parcel, a web application bundler. This will also create node_modules folder with all necessary packages.
   npm install --save-dev parcel-bundler
   
   # install OpenLayers (ol) inside node_modules folder
@@ -110,12 +110,23 @@ Add navigation bar to body section of index.html.
 ```
 
 # 8. Execute parcel
-Enter command below in terminal to get parcel to work.
+Enter command below in terminal to get parcel to work. If it works, the webpage should display.
 ```bash
   npm start
 ```
 
-
+# 9. Develop application
+Import ol to app.js
+```javascript
+  // Import ol
+  import 'ol/ol.css';
+  import {
+      Map,
+      View
+  } from 'ol';
+  import TileLayer from 'ol/layer/Tile';
+  import OSM from 'ol/source/OSM';
+```
 
 
 # 3. add craete app.js
