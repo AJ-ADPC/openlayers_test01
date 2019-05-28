@@ -1,7 +1,8 @@
 # 1. Installation
 ```bash
-  # create a package.json file
+  ## create a package.json file
   npm init
+  
   # install Parcel, a web application bundler
   npm install --save-dev parcel-bundler
   // install OpenLayers
