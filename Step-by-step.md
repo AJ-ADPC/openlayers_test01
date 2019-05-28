@@ -1,3 +1,8 @@
+# 0. Create project folder
+```bash
+  mkdir webgis_test1
+```
+
 # 1. Installation
 Do this step in command prompt or terminal
 ```bash
@@ -39,6 +44,13 @@ Create index.html in the project folder and write these lines. (Type ! and Enter
   </body>
   </html>
 ```
+
+# 4. Create style.css
+Create index.html in the project folder and write
+```css
+  #map {
+    width: 100%;
+  }
 
 # 3. add craete app.js
 ```javascript
