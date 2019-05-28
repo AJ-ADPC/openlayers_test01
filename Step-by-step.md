@@ -1,14 +1,16 @@
 # 1. Installation
-Do this step on command prompt or terminal
+Do this step in command prompt or terminal
 ```bash
-  ## create a package.json file
+  create a package.json file
   npm init
   
   # install Parcel, a web application bundler
   npm install --save-dev parcel-bundler
-  // install OpenLayers
+  
+  # install OpenLayers
   npm i --save ol
-  // install jquery
+  
+  # install jquery
   npm i --save jquery
 ```
 # add package.json
