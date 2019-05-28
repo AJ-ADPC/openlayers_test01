@@ -60,8 +60,8 @@ Create app.js in the project folder and write
 ```
 
 # 6. Add Bootstrap to index.html
-Bootstrap builds responsive web design, mobile-first projects.
-Go to https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp, scroll down to Bootstrap 4 CDN
+Bootstrap builds responsive web design, mobile-first projects.<br/>
+Go to https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp, scroll down to Bootstrap 4 CDN.<br/>
 Then copy the MaxCDN code and paste it in the header section before any css style.
 ```html
   <!-- Latest compiled and minified CSS -->
