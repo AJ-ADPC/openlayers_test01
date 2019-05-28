@@ -12,10 +12,10 @@ Do this step in command prompt or terminal
   # install Parcel, a web application bundler
   npm install --save-dev parcel-bundler
   
-  # install OpenLayers
+  # install OpenLayers (ol) inside node_modules folder
   npm i --save ol
   
-  # install jquery
+  # install jquery inside node_modules folder
   npm i --save jquery
 ```
 # 2. Configure package.json
@@ -54,12 +54,13 @@ Create style.css in the project folder and write
 ```
 
 # 5. Create app.js
-Create app.js in the project folder and write
+Create app.js in the project folder and this line to call jquery
 ```javascript
-  console.log('Hello');
+  window.$ = require('jquery');
 ```
 
-# 6. Add Bootstrap to head section of index.html
+# 6. Add Bootstrap
+Add Bootstrap to head section of index.html.
 Bootstrap builds responsive web design, mobile-first projects.<br/>
 Go to https://www.w3schools.com/bootstrap4/bootstrap_get_started.asp, scroll down to Bootstrap 4 CDN.<br/>
 Then copy the MaxCDN code and paste it in the header section before any css style.
@@ -77,7 +78,8 @@ Then copy the MaxCDN code and paste it in the header section before any css styl
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 ```
 
-# 7. Add navigation bar to body section of index.html
+# 7. Add navigation bar
+Add navigation bar to body section of index.html.
 ```html
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -105,6 +107,12 @@ Then copy the MaxCDN code and paste it in the header section before any css styl
         </div>
     </nav>
 </body>
+```
+
+# 8. Execute parcel
+Enter command below in terminal to get parcel to work.
+```bash
+  npm start
 ```
 
 
