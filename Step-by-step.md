@@ -1,9 +1,13 @@
-# 1 install
+# 1. Installation
 ```bash
-npm install init
-npm install --save-dev parcel-bundler
-npm i --save ol
-npm i --save jquery
+  // create a package.json file
+  npm init
+  // install Parcel, a web application bundler
+  npm install --save-dev parcel-bundler
+  // install OpenLayers
+  npm i --save ol
+  // install jquery
+  npm i --save jquery
 ```
 # add package.json
 ```javascript
