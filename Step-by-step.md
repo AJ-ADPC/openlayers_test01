@@ -1,7 +1,7 @@
 # 1. Installation
 Do this step in command prompt or terminal
 ```bash
-  create a package.json file
+  # create a package.json file
   npm init
   
   # install Parcel, a web application bundler
