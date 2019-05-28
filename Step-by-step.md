@@ -13,16 +13,34 @@ Do this step in command prompt or terminal
   # install jquery
   npm i --save jquery
 ```
-# add package.json
+# 2. Configure package.json
+Creat command for parcel by adding last two lines below into package.json
 ```javascript
-  // add package.json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html"
   }
 ```
-# add craete app.js
+
+# 3. Create index.html
+Create index.html in the project folder and write these lines. (Type ! and Enter in VS Code)
+```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+  </head>
+  <body>
+
+  </body>
+  </html>
+```
+
+# 3. add craete app.js
 ```javascript
 //   craete app.js
 window.$ = require('jquery');
