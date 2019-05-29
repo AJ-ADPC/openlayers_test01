@@ -304,10 +304,11 @@ const map = new Map({
 **In app.js**
 Add this line into import section.
 ```javascript
+// import tile XYZ
 import XYZSource from 'ol/source/XYZ';
 ```
 
-Add this code to the layer section.
+Add this code to the layer section, after OSM layer.
 ```javascript
 new TileLayer({
   source: new XYZSource({
@@ -316,14 +317,61 @@ new TileLayer({
 }),
 ```
 
+# 13. Adding GeoJSON (Vector Tile Selection)
+**In app.js**
+Add this line into import section.
+```javascript
+// import GeoJSON
+import GeoJSON from 'ol/format/GeoJSON';
+import VectorLayer from 'ol/layer/Vector';
+import VectorSource from 'ol/source/Vector';
+```
+Then create constant to store GeoJSON layer
+```javascript
+const jsonPro = `http://119.59.125.189:8080/mapservice/gistnu/wms?service=WFS&version=1.0.0&request=GetFeature&typeName=gistnu:hospital&outputFormat=application%2Fjson`;
+```
+Add this code to the layer section, after the last overlay layer.
+```javascript
+new VectorLayer({
+  source: new VectorSource({
+    format: new GeoJSON(),
+    projection: 'EPSG:4326',
+    url: jsonPro
+  })
+})
+```
+# 14. Using Control in the map
+## 14.1 Attribute Control
+**In app.js**
+Import Attribution
+```javascript
+// Import Attribution
+import {
+  defaults as defaultControls,
+  Attribution
+} from 'ol/control';
+```
+Then assign a constant **attribution**
+```javascript
+// Create constant for attribution control
+const attribution = new Attribution({
+  collapsible: false,
+  // collapsed: true
+});
+```
+Then add the **controls** in the **map** element, after **view** parameter
+```javascript
+controls: defaultControls({
+  attribution: false
+}).extend([
+  attribution
+])
+```
+
 
 </br>
 </br>
 ```javascript
-import {
-  fromLonLat
-} from 'ol/proj';
-
 import MVT from 'ol/format/MVT.js';
 import VectorTileLayer from 'ol/layer/VectorTile.js';
 import VectorTileSource from 'ol/source/VectorTile.js';
@@ -333,103 +381,7 @@ import {
   Style
 } from 'ol/style.js';
 
-const center = fromLonLat([100.196949, 16.768026], 'EPSG:3857');
 
-var layers = [
-
-  new TileLayer({
-    source: new OSM(),
-    visible: false
-  }),
-  // google map
-  new TileLayer({
-    source: new XYZSource({
-      url: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'
-    })
-  }),
-
-  // google map
-  new TileLayer({
-    source: new XYZSource({
-      url: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'
-    })
-  }),
-
-  new TileLayer({
-    source: new TileWMS({
-      url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
-      params: {
-        'LAYERS': 'gistnu:province',
-        'TILED': true
-      },
-      serverType: 'geoserver',
-      transition: 0
-    }),
-    title: 'province',
-    zIndex: 2,
-    isBaseLayer: false,
-    visible: false
-  }),
-  new TileLayer({
-    source: new TileWMS({
-      url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
-      params: {
-        'LAYERS': 'gistnu:amphoe',
-        'TILED': true
-      },
-      serverType: 'geoserver',
-      transition: 0
-    }),
-    title: 'amphoe',
-    zIndex: 2,
-    isBaseLayer: false,
-    visible: false
-  }),
-  new TileLayer({
-    source: new TileWMS({
-      url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
-      params: {
-        'LAYERS': 'gistnu:tambon',
-        'TILED': true
-      },
-      serverType: 'geoserver',
-      transition: 0
-    }),
-    title: 'tambon',
-    zIndex: 2,
-    isBaseLayer: false,
-    visible: false
-  }),
-  new TileLayer({
-    source: new TileWMS({
-      url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
-      params: {
-        'LAYERS': 'gistnu:ways',
-        'TILED': true
-      },
-      serverType: 'geoserver',
-      transition: 0
-    }),
-    title: 'ways',
-    zIndex: 2,
-    isBaseLayer: false,
-    visible: false
-  }),
-  new TileLayer({
-    source: new TileWMS({
-      url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
-      params: {
-        'LAYERS': 'gistnu:village',
-        'TILED': true
-      },
-      serverType: 'geoserver',
-      transition: 0
-    }),
-    title: 'village',
-    zIndex: 2,
-    isBaseLayer: false,
-    visible: false
-  }),
   new VectorTileLayer({
     declutter: true,
     source: new VectorTileSource({
@@ -448,15 +400,6 @@ var layers = [
     })
   })
 ];
-
-const map = new Map({
-  target: 'map',
-  layers: layers,
-  view: new View({
-    center: center,
-    zoom: 10
-  })
-});
 ```
 
 # add page
@@ -484,24 +427,6 @@ const map = new Map({
       </ul>
   </div>
 </div>
-```
-
-
-# 14 geojson 
-```js
-import GeoJSON from 'ol/format/GeoJSON';
-import VectorLayer from 'ol/layer/Vector';
-import VectorSource from 'ol/source/Vector';
-
-const jsonPro = `http://119.59.125.189:8080/mapservice/gistnu/wms?service=WFS&version=1.0.0&request=GetFeature&typeName=gistnu:hospital&outputFormat=application%2Fjson`;
-
-new VectorLayer({
-  source: new VectorSource({
-    format: new GeoJSON(),
-    projection: 'EPSG:4326',
-    url: jsonPro
-  })
-})
 ```
 
 # 15.1 attribute control
