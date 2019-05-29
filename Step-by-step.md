@@ -167,7 +167,33 @@ Then put map element in the body section under the navigation bar.</br>
 <div id="map"></div>
 ```
 Then insert the script app.js **UNDER** body closing tag</br>
-**_Trick VS Code:_** type _scr_, select _script:src_, then put _app.js_, thene Enter
+**_Trick VS Code:_** type _scr_, select _script:src_, then put _app.js_, then Enter
+```html
+<script src="app.js"></script>
+```
+
+# 10. Configure View
+The default OpenLayers coordinate system is epsg: 3857 (Web Mercater).</br>
+So in order to use latlon (epsg: 4326), it has to be transformed using **_fromLonLat_** module.
+**In app.js**
+```javascript
+import {fromLonLat} from 'ol/proj';
+```
+Then we can define the latlon coordinates in constant center
+**In app.js**
+```javascript
+// Create constant center
+const center = fromLonLat([100.196949, 16.768026], 'EPSG:3857')
+```
+
+Then use center as the center in view.
+**In app.js**
+```javascript
+  view: new View({
+    center: center,
+    zoom: 10
+  })
+```
 
 ```
 //import TileWMS from 'ol/source/TileWMS';
