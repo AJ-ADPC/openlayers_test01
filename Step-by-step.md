@@ -189,10 +189,10 @@ const center = fromLonLat([100.196949, 16.768026], 'EPSG:3857')
 Then use center as the center in view.
 **In app.js**
 ```javascript
-  view: new View({
-    center: center,
-    zoom: 10
-  })
+view: new View({
+  center: center,
+  zoom: 10
+})
 ```
 
 # 11. Adding WMS layer
@@ -300,7 +300,7 @@ const map = new Map({
 });
 ```
 
-# 12. Adding [Google Tile XYZ] (https://geogeek.xyz/how-to-add-google-maps-layers-in-qgis-3.html)
+# 12. Adding [Google Tile XYZ](https://geogeek.xyz/how-to-add-google-maps-layers-in-qgis-3.html)
 **In app.js**
 Add this line into import section.
 ```javascript
