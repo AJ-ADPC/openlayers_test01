@@ -116,7 +116,7 @@ Enter command below in terminal to get parcel to work. If it works, the webpage 
 ```
 
 # 9. Develop application
-**In app.js**
+**In app.js**</br>
 Import OpenLayers (ol) to app.js
 ```javascript
 // Import ol
@@ -129,7 +129,7 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 
 ```
-**In app.js**
+**In app.js**</br>
 Create constant **map**</br>
 Define **target** to display in the element named **map**</br>
 Define **layers** to disply tilelayer from OpenStreetmap</br>
@@ -150,17 +150,24 @@ const map = new Map({
 ```
 
 **In style.css**, add style for map element</br>
-**_Trick VS Code:_** type _li_, select css, then Enter
 ```css
 #map {
   width: 100%;
   height: 500px;
 ```
-**In index.html**, put style.css in the head section</br>
+**In index.html**</br>
+put style.css in the head section</br>
+**_Trick VS Code:_** type _li_, select css, then Enter
 ```html
 <link rel="stylesheet" href="style.css">
 ```
-
+Then put map element in the body section under the navigation bar.</br>
+**_Trick VS Code:_** type _div#map_, hit Tab, then Enter
+```html
+<div id="map"></div>
+```
+Then insert the script app.js **UNDER** body closing tag</br>
+**_Trick VS Code:_** type _scr_, select _script:src_, then put _app.js_, thene Enter
 
 ```
 //import TileWMS from 'ol/source/TileWMS';
