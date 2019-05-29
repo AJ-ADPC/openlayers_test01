@@ -126,23 +126,39 @@ import {
 } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
+
 ```
 
 Create constant **map**</br>
 Define **target** to display in the element named **map**</br>
 Define **layers** to disply tilelayer from OpenStreetmap</br>
+Define a start position and zoom level for **view**
+```javascript
+const map = new Map({
+  target: 'map',
+  layer: [
+    new TileLayer({
+      source: new OSM()
+    })
+  ],
+  view: new View({
+    center: [0,0],
+    zoom: 0
+  })
+});
+```
+
+In CSS, add style for map element
+```css
+#map {
+  width: 100%;
+  height: 500px;
+```
+Define **target** to display in the element named **map**</br>
 
 ```
-import 'ol/ol.css';
-import {
-  Map,
-  View
-} from 'ol';
-import TileLayer from 'ol/layer/Tile';
-import OSM from 'ol/source/OSM';
-import TileWMS from 'ol/source/TileWMS';
-
-import XYZSource from 'ol/source/XYZ';
+//import TileWMS from 'ol/source/TileWMS';
+//import XYZSource from 'ol/source/XYZ';
 
 import {
   fromLonLat
