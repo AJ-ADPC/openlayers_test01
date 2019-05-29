@@ -319,7 +319,7 @@ new TileLayer({
 
 </br>
 </br>
-```js
+```javascript
 import {
   fromLonLat
 } from 'ol/proj';
