@@ -29,7 +29,7 @@ Creat command for parcel by adding last two lines below into package.json
 ```
 
 # 3. Create index.html
-Create index.html in the project folder and write these lines. (Type ! and Enter in VS Code)
+Create index.html in the project folder and write these lines. (In VS Code, type ! and Enter to get the auto-template)
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +116,7 @@ Enter command below in terminal to get parcel to work. If it works, the webpage 
 ```
 
 # 9. Develop application
-Import ol to app.js
+Import OpenLayers (ol) to app.js
 ```javascript
 // Import ol
 import 'ol/ol.css';
@@ -128,7 +128,8 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 ```
 
-
+Create constant ###map
+Define ###target to display in the element named ###map
 
 ```
 import 'ol/ol.css';
