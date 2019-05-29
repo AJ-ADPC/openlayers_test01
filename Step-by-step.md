@@ -130,14 +130,14 @@ import OSM from 'ol/source/OSM';
 
 ```
 **In app.js**</br>
-Create constant **map**</br>
+Create variable **map**</br>
 Define **target** to display in the element named **map**</br>
 Define **layers** to disply tilelayer from OpenStreetmap</br>
 Define a start position and zoom level for **view**
 ```javascript
 const map = new Map({
   target: 'map',
-  layer: [
+  layers: [
     new TileLayer({
       source: new OSM()
     })
@@ -195,6 +195,116 @@ Then use center as the center in view.
   })
 ```
 
+# 11. Adding wms layer
+**In app.js**
+Import **_tileWMS_** module
+```javascript
+import TileWMS from 'ol/source/TileWMS';
+```
+
+Add layers from Geoserver, configuring parameters as described below.
+```javascript
+var layers = [
+  new TileLayer({
+    source: new OSM(),
+    visible: false
+  }),
+  
+  //overlay layers
+  new TileLayer({
+      source: new TileWMS({
+          url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
+          params: {
+              'LAYERS': 'gistnu:province',
+              'TILED': true
+          },
+          serverType: 'geoserver',
+          transition: 0
+      }),
+      title: 'province',
+      zIndex: 2,
+      isBaseLayer: false,
+      visible: true
+  }),
+  new TileLayer({
+      source: new TileWMS({
+          url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
+          params: {
+              'LAYERS': 'gistnu:amphoe',
+              'TILED': true
+          },
+          serverType: 'geoserver',
+          transition: 0
+      }),
+      title: 'amphoe',
+      zIndex: 2,
+      isBaseLayer: false,
+      visible: true
+  }),
+  new TileLayer({
+      source: new TileWMS({
+          url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
+          params: {
+              'LAYERS': 'gistnu:tambon',
+              'TILED': true
+          },
+          serverType: 'geoserver',
+          transition: 0
+      }),
+      title: 'tambon',
+      zIndex: 2,
+      isBaseLayer: false,
+      visible: true
+  }),
+  new TileLayer({
+      source: new TileWMS({
+          url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
+          params: {
+              'LAYERS': 'gistnu:ways',
+              'TILED': true
+          },
+          serverType: 'geoserver',
+          transition: 0
+      }),
+      title: 'ways',
+      zIndex: 2,
+      isBaseLayer: false,
+      visible: true
+  }),
+  new TileLayer({
+      source: new TileWMS({
+          url: 'http://119.59.125.189:8080/mapservice/gistnu/wms?',
+          params: {
+              'LAYERS': 'gistnu:village',
+              'TILED': true
+          },
+          serverType: 'geoserver',
+          transition: 0
+      }),
+      title: 'village',
+      zIndex: 2,
+      isBaseLayer: false,
+      visible: true
+  }),
+]
+```
+Then change layers in map to use layers
+```javascript
+const map = new Map({
+  target: 'map',
+  layers: layers,
+  view: new View({
+    center: [0,0],
+    zoom: 0
+  })
+});
+```
+
+
+
+
+</br>
+</br>
 ```
 //import TileWMS from 'ol/source/TileWMS';
 //import XYZSource from 'ol/source/XYZ';
