@@ -128,8 +128,9 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 ```
 
-Create constant ###map
-Define ###target to display in the element named ###map
+Create constant **map**</br>
+Define **target** to display in the element named **map**</br>
+Define **layers** to disply tilelayer from OpenStreetmap</br>
 
 ```
 import 'ol/ol.css';
