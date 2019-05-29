@@ -195,7 +195,7 @@ Then use center as the center in view.
   })
 ```
 
-# 11. Adding wms layer
+# 11. Adding WMS layer
 **In app.js**
 Import **_tileWMS_** module
 ```javascript
@@ -300,15 +300,26 @@ const map = new Map({
 });
 ```
 
-
-
-
-</br>
-</br>
+# 12. Adding [Google Tile XYZ] (https://geogeek.xyz/how-to-add-google-maps-layers-in-qgis-3.html)
+**In app.js**
+Add this line into import section.
+```javascript
+import XYZSource from 'ol/source/XYZ';
 ```
-//import TileWMS from 'ol/source/TileWMS';
-//import XYZSource from 'ol/source/XYZ';
 
+Add this code to the layer section.
+```javascript
+new TileLayer({
+  source: new XYZSource({
+    url: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}'
+  })
+}),
+```
+
+
+</br>
+</br>
+```js
 import {
   fromLonLat
 } from 'ol/proj';
@@ -446,7 +457,6 @@ const map = new Map({
     zoom: 10
   })
 });
-
 ```
 
 # add page
