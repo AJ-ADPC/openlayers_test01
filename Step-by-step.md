@@ -343,7 +343,7 @@ new VectorLayer({
 # 14. Using Control in the map
 ## 14.1 Attribute Control
 **In app.js**
-Import Attribution
+Import Attribution, assing it under the import group
 ```javascript
 // Import Attribution
 import {
@@ -351,7 +351,7 @@ import {
   Attribution
 } from 'ol/control';
 ```
-Then assign a constant **attribution**
+Then assign a constant **attribution**, put it under layers, before **map** element
 ```javascript
 // Create constant for attribution control
 const attribution = new Attribution({
@@ -366,6 +366,18 @@ controls: defaultControls({
 }).extend([
   attribution
 ])
+```
+
+Then add function for resizing attribution at the bottom, after the **map** element
+```javascript
+// Function to change the size of attribution
+function checkSize() {
+    var small = map.getSize()[0] < 600;
+    attribution.setCollapsible(small);
+    attribution.setCollapsed(small);
+}
+window.addEventListener('resize', checkSize);
+checkSize();
 ```
 
 
