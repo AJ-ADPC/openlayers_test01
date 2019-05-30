@@ -348,10 +348,11 @@ Import Attribution, assing it under the import group
 // Import Attribution
 import {
   defaults as defaultControls,
-  Attribution
+  Attribution,
+  FullScreen
 } from 'ol/control';
 ```
-Then assign a constant **attribution**, put it under layers, before **map** element
+Then create a constant **attribution**, put it under **layers**, before **map** element
 ```javascript
 // Create constant for attribution control
 const attribution = new Attribution({
@@ -361,11 +362,19 @@ const attribution = new Attribution({
 ```
 Then add the **controls** in the **map** element, after **view** parameter
 ```javascript
-controls: defaultControls({
-  attribution: false
-}).extend([
-  attribution
-])
+const map = new Map({
+  target: 'map',
+  layers: layers,
+  view: new View({
+    center: center,
+    zoom: 8,
+  }),
+    controls: defaultControls({
+        attribution: false
+    }).extend([
+        attribution,
+    ]),
+});
 ```
 
 Then add function for resizing attribution at the bottom, after the **map** element
@@ -379,6 +388,148 @@ function checkSize() {
 window.addEventListener('resize', checkSize);
 checkSize();
 ```
+## 14.2 Fullscreen Control
+**In app.js**
+Import FullScreen to the control group
+```javascript
+import {
+    defaults as defaultControls,
+    Attribution,
+    FullScreen
+} from 'ol/control';
+```
+Then create a constant **fullscreen**, put it under **layers**, before **map** element
+```javascript
+// Create constant for fullscreen control
+const fullscreen = new FullScreen();
+```
+Then add the fullscreen after the attribution
+```javascript
+const map = new Map({
+  target: 'map',
+  layers: layers,
+  view: new View({
+    center: center,
+    zoom: 8,
+  }),
+    controls: defaultControls({
+        attribution: false
+    }).extend([
+        attribution,
+        fullscreen
+    ]),
+});
+```
+**In style.css**</br>
+Finally, add the style in **style.css**
+```css
+// style.css
+.map:-moz-full-screen {
+  height:100% ;
+}
+
+.map:-webkit-full-screen {
+  height:100% ;
+}
+
+.map:-ms-fullscreen {
+  height: 100% ;
+}
+
+.map:fullscreen {
+  height: 100% ;
+}
+
+.ol-rotate {
+  top: 50px;
+}
+```
+
+## 14.3 MousePosition Control
+**In app.js**
+Import MousePosition to the control group
+```javascript
+import {
+    defaults as defaultControls,
+    Attribution,
+    FullScreen,
+    MousePosition
+} from 'ol/control';
+```
+And import createStringXY
+```javascript
+// import  createStringXY, this is to work with MousePosition
+import {
+  createStringXY
+} from 'ol/coordinate.js';
+```
+
+Then create a constant **mousePosition**, and configure the parameters
+```javascript
+// Create constant mousePosition
+const mousePosition = new MousePosition({
+  coordinateFormat: createStringXY(4),
+  projection: 'EPSG:4326',
+  className: 'custom-mouse-position',
+  target: 'mouse-position',
+  undefinedHTML: '&nbsp;'
+});
+```
+Then add the mousePosition in the **map** element
+```javascript
+const map = new Map({
+  target: 'map',
+  layers: layers,
+  view: new View({
+    center: center,
+    zoom: 8,
+  }),
+    controls: defaultControls({
+        attribution: false
+    }).extend([
+        attribution,
+        fullscreen,
+        mousePosition
+    ]),
+});
+```
+
+**In index.html**
+Then create the card to display coordinate options</br>
+Put these codes after <div id="map"></div>
+```html
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label>Projection </label>
+                <select class="form-control" id="projection">
+                    <option value="EPSG:4326">EPSG:4326</option>
+                    <option value="EPSG:3857">EPSG:3857</option>
+                </select>
+                <label>Precision </label>
+                <input class="form-control" id="precision" type="number" min="0" max="12" value="4" />
+                <div id="mouse-position"></div>
+            </div>
+        </form>
+    </div>
+</div>
+```
+
+**In app.js**
+Finally, add these to then end of app.js
+```javascript
+// These are for MousePosition
+$('#projection').change((e) => {
+  mousePosition.setProjection(e.target.value);
+});
+
+$('#precision').change((e) => {
+  const format = createStringXY(e.target.valueAsNumber);
+  mousePosition.setCoordinateFormat(format);
+});
+```
+
 
 
 </br>
@@ -439,158 +590,6 @@ import {
       </ul>
   </div>
 </div>
-```
-
-# 15.1 attribute control
-```js
-import {
-  defaults as defaultControls,
-  Attribution
-} from 'ol/control';
-
-// attribution
-const attribution = new Attribution({
-  collapsible: false,
-  // collapsed: true
-});
-
-const map = new Map({
-  target: 'map',
-  layers: layers,
-  view: new View({
-    center: center,
-    zoom: 10
-  }),
-  controls: defaultControls({
-    attribution: false
-  }).extend([
-    attribution
-  ])
-});
-
-function checkSize() {
-  var small = map.getSize()[0] < 600;
-  attribution.setCollapsible(small);
-  attribution.setCollapsed(small);
-}
-window.addEventListener('resize', checkSize);
-checkSize();
-
-```
-
-# 15.2 FullScreen control
-```js
-// control
-import {
-  defaults as defaultControls,
-  Attribution,
-  FullScreen
-} from 'ol/control';
-
-const fullscree = new FullScreen();
-
-const map = new Map({
-  target: 'map',
-  layers: layers,
-  view: new View({
-    center: center,
-    zoom: 10
-  }),
-  controls: defaultControls({
-    attribution: false
-  }).extend([
-    attribution,
-    fullscreen
-  ])
-});
-```
-```css
-// style.css
-.map:-moz-full-screen {
-    height:100% ;
-  }
-
-  .map:-webkit-full-screen {
-    height:100% ;
-  }
-
-  .map:-ms-fullscreen {
-    height: 100% ;
-  }
-
-  .map:fullscreen {
-    height: 100% ;
-  }
-
-  .ol-rotate {
-    top: 50px;
-  }
-```
-
-# 15.3 MousePosition  control
-```js
-// control
-import {
-  defaults as defaultControls,
-  Attribution,
-  FullScreen,
-  MousePosition
-} from 'ol/control';
-import {
-  createStringXY
-} from 'ol/coordinate.js';
-
-const mousePosition = new MousePosition({
-  coordinateFormat: createStringXY(4),
-  projection: 'EPSG:4326',
-  className: 'custom-mouse-position',
-  target: 'mouse-position',
-  undefinedHTML: '&nbsp;'
-});
-
-const map = new Map({
-  target: 'map',
-  layers: layers,
-  view: new View({
-    center: center,
-    zoom: 10
-  }),
-  controls: defaultControls({
-    attribution: false
-  }).extend([
-    attribution,
-    fullScreen,
-    mousePosition
-  ])
-});
-```
-```html
-<div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label>Projection </label>
-                    <select class="form-control" id="projection">
-                        <option value="EPSG:4326">EPSG:4326</option>
-                        <option value="EPSG:3857">EPSG:3857</option>
-                    </select>
-                    <label>Precision </label>
-                    <input class="form-control" id="precision" type="number" min="0" max="12" value="4" />
-                    <div id="mouse-position"></div>
-                </div>
-            </form>
-        </div>
-    </div>
-```
-```js
-$('#projection').change((e) => {
-  mousePosition.setProjection(e.target.value);
-});
-
-$('#precision').change((e) => {
-  const format = createStringXY(e.target.valueAsNumber);
-  mousePosition.setCoordinateFormat(format);
-});
 ```
 
 # 15.4 Overview map 
